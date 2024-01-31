@@ -8,7 +8,7 @@ class ruta  {
             if (method_exists($obj, $accion)) {
                 $obj->$accion();
             } else {
-                echo "el método no existe";
+                echo "<br>Ese servicio no existe";
             }
         } else {
             echo "<br>Ese controlador no existe";

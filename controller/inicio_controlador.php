@@ -1,16 +1,14 @@
 <?php
 
     class inicio_controlador {
-        public function __construct(){}
+        public function __construct(){
+            $this->obj = new Plantilla();
+        }
         public function principal(){
-            require_once "views/header.php";
-            require_once "views/inicio/principal.php";
-            require_once "views/footer.php";
+            $this->obj->unirPagina("inicio/principal");
         }
         public function frmLogin(){
-            require_once "views/header.php";
-            require_once "views/inicio/frmLogin.php";
-            require_once "views/footer.php";
+            $this->obj->unirPagina("inicio/frmLogin");
         }
         public function cerrarSesion(){}
 
