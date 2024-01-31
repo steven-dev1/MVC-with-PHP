@@ -1,0 +1,9 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.nav {
+    color: aliceblue;
+    background-color: black;
+}
