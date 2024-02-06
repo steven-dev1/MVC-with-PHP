@@ -11,7 +11,7 @@ class ruta  {
                 echo "<br>Ese servicio no existe";
             }
         } else {
-            echo "<br>Ese controlador no existe";
+            echo "<br>Ese control     ador no existe";
         }
     }
 }

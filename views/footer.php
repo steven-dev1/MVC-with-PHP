@@ -28,6 +28,7 @@
     <script src="public/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
+    <script src="public/js/script.js"></script>
     <script src="public/js/main.js"></script>
 </body>
 </html>
