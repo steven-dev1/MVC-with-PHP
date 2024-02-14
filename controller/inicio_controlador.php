@@ -8,7 +8,7 @@
             $this->obj->unirPagina("inicio/principal");
         }
         public function frmLogin(){
-            $this->obj->unirPagina("inicio/frmLogin");
+            $this->obj->unirPagina("inicio/frmLogin", false);
         }
         public function cerrarSesion(){}
 
