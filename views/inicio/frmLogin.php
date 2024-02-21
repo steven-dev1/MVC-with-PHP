@@ -42,14 +42,14 @@
                             <h3>Inicio de sesión</h3>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
                             <label for="floatingInput">Correo electronico</label>
                         </div>
                         <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password">
                             <label for="floatingPassword">Contraseña</label>
                         </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Iniciar sesión</button>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4" onclick="validarUsuario()">Iniciar sesión</button>
                         <p class="text-center mb-0">No tienes una cuenta? <a href="">Registrarse</a></p>
                     </div>
                 </div>
@@ -71,6 +71,8 @@
 
     <!-- Template Javascript -->
     <script src="public/js/main.js"></script>
+    <script src="public/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script src="js"></script> -->
 </body>
 

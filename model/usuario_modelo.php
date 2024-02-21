@@ -3,7 +3,7 @@
         public static function registrar($info) {
             $i = new connection();
             $con = $i->getConexion();
-            $sql = "INSERT INTO t_usuario(USU_UID, USU_NOMBRES, USU_APELLIDOS, USU_EMAIL, USU_PASSWORD, USU_TELEFONO, USU_FCH_NAC) VALUES (?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO t_usuario(USU_UID, USU_NOMBRES, USU_APELLIDOS, USU_EMAIL, USU_PASSWORD, USU_TELEFONO, USU_FCH_NAC, USU_ROL) VALUES (?,?,?,?,?,?,?,?)";
             $uid = uniqid();
             $st = $con->prepare($sql);
             $v = array(
@@ -13,13 +13,11 @@
                 $info["email"], 
                 sha1($info["password"]), 
                 $info["telefono"], 
-                $info["fecha"]
+                $info["fecha"],
+                $info["rol"]
             );
-
             return $st->execute($v);
         }
-
-
         public static function listar(){
             $i = new connection();
             $con = $i->getConexion();
@@ -28,19 +26,14 @@
             $st->execute();
             return $st->fetchAll();
         }
-
         public static function eliminar($UID){
             $i = new connection();
             $con = $i -> getConexion();
             $sql = "DELETE FROM t_usuario WHERE USU_UID = ?";
-
             $st = $con -> prepare($sql);
             $v = array($UID);
-
             return  $st -> execute($v);
-        
         }
-
         public static function buscarXemail($email){
             $i = new connection();
             $con = $i->getConexion();
@@ -50,7 +43,6 @@
             $st->execute($v);
             return $st->fetch();
         }
-
         public static function buscarXUid($uid){
             $i = new connection();
             $con = $i->getConexion();
@@ -60,11 +52,10 @@
             $st->execute($v);
             return $st->fetch();
         }
-
         public static function actualizar($info) {
             $i = new connection();
             $con = $i->getConexion();
-            $sql = "UPDATE t_usuario SET USU_NOMBRES=?, USU_APELLIDOS=?, USU_EMAIL=?, USU_TELEFONO=? USU_FCH_NAC=? WHERE USU_UID=?";
+            $sql = "UPDATE t_usuario SET USU_NOMBRES=?, USU_APELLIDOS=?, USU_EMAIL=?, USU_TELEFONO=?, USU_FCH_NAC=?, USU_ROL=? WHERE USU_UID=?";
             $st = $con->prepare($sql);
             $v = array(
                 $info["names"], 
@@ -72,9 +63,9 @@
                 $info["email"], 
                 $info["telefono"], 
                 $info["fecha"],
-                $info["uid"]
+                $info["rol"],
+                $info["uid"],
             );
-
             return $st->execute($v);
         }
     }
