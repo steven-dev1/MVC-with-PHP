@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1>Página principal</h1>
-            <p>MVC desarrollado en PHP...</p>
+            <p class="alert alert-primary" role="alert">MVC desarrollado en PHP por Steven Gonzalez</p>
         </div>
     </div>
 </div>

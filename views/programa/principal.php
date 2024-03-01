@@ -2,7 +2,37 @@
     <div class="row">
         <div class="col-lg-12">
             <h3>Programa</h3>
-            <a href="?controlador=programa&accion=frmRegistrar" class="btn btn-primary">Registrar</a>
+            <?php if ($_SESSION['USU_ROL'] == 1){
+                echo '<a href="?controlador=programa&accion=frmRegistrar" class="btn btn-primary">Registrar</a>';
+            } ?>
         </div>
     </div>
 </div>
+<div class="px-5 pt-5 bg-gray">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Apellido</th>
+                    <?php if ($_SESSION['USU_ROL'] == 1){
+                        echo "<th>Acciones</th>"; }
+                    ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    foreach($this->programas as $info) {
+                        $uid = $info['PRO_UID'];
+                        echo "<tr>";
+                        echo "<td class='text-centerr'>".$info['PRO_CODIGO']."</td>";
+                        echo "<td>".$info['PRO_NOMBRE']."</td>";
+                        if ($_SESSION['USU_ROL'] == 1){
+                            echo "<td><a href='?controlador=programa&accion=frmEditar&uid=$uid' class='btn btn-primary'>Editar</a> <button type='button' onclick='eliminarProgramaConfirm(\"$uid\", this)' class='btn btn-danger'>Eliminar</button></td>";
+                        }
+                        echo "</tr>";
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    </div>    

@@ -35,7 +35,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.php" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                    <h3 class="text-primary">App by Steven</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -44,11 +44,17 @@
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0"><?php echo $_SESSION['USU_NOMBRES'] ?></h6>
-                        <span>Admin</span>
+                        <span><?php if($_SESSION['USU_ROL'] == 1) {
+                            echo "Administrador";
+                        } else if($_SESSION['USU_ROL'] == 2){
+                            echo "Usuario";
+                        } else {
+                            echo "Secretaria";
+                        } ?></span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/appMVC" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
+                    <a href="?controlador=inicio&accion=principal" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
                     <a href="?controlador=usuario&accion=principal" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Usuario</a>
                     <a href="?controlador=programa&accion=principal" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Programa</a>
                     <a href="?controlador=uspro&accion=principal" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Inscripción</a>

@@ -99,7 +99,7 @@ let validarUsuario = async() => {
                 showConfirmButton: false,
                 timer: 1500
               });
-              setInterval(() => {
+              setTimeout(() => {
                 window.location.href = '?controlador=inicio&accion=principal'
               },1600)
         } else if(info.estado == 2) {
@@ -156,7 +156,208 @@ let editarUsuario = async () => {
         showConfirmButton: false,
         timer: 1500
     });
-    setInterval(() => {
+    setTimeout(() => {
         window.location.href = "?controlador=usuario&accion=principal"
     },1600)
+}
+
+// PROGRAMA
+
+let registrarPrograma = async() => {
+    let codigo = document.getElementById('codigo').value;
+    let programa = document.getElementById('programa').value;
+    if(codigo.trim() == "" || programa.trim() == ""){
+        return Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Todos los campos son obligatorios",
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+    let url = '?controlador=programa&accion=registrar';
+    let fd = new FormData();
+    fd.append("codigo", codigo);
+    fd.append("programa", programa);
+    let respuesta = await fetch(url, {
+        method: "post",
+        body: fd
+    });
+    let info = await respuesta.json();
+    if(info.estado = "success") {
+        document.getElementById('codigo').value = ""
+        document.getElementById('programa').value = ""
+    }
+    Swal.fire({
+        position: "center",
+        icon: info.icono,
+        title: info.mensaje,
+        showConfirmButton: false,
+        timer: 1500
+    });
+    setTimeout(()=> {
+        window.location.href = '?controlador=programa&accion=principal';
+    }, 1600)
+}
+let eliminarProgramaConfirm = async (uid,elem) => {
+    Swal.fire({
+        title: "Estas seguro que deseas eliminar?",
+        text: "Esta accion no se puede revertir!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar!",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarPrograma(uid, elem)
+        }
+    });
+}
+
+let eliminarPrograma = async (uid, elem) => {
+    let url = `?controlador=programa&accion=eliminar&uid=${uid}`;
+    let respuesta = await fetch(url)
+    let info = respuesta.json();
+    Swal.fire({
+        title:"Informacion",
+        text: "Se eliminó el programa correctamentes",
+        icon: info.icono
+    });
+    $(elem).closest('tr').remove();  
+}
+
+let editarPrograma = async () => {
+    let codigo = document.getElementById('codigo').value;
+    let programa = document.getElementById('programa').value;
+    let uid = document.getElementById('uid').value
+    if(codigo.trim() == "" || programa.trim() == "" || uid.trim() == ""){
+        return Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Todos los campos son obligatorios",
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+    let url = '?controlador=programa&accion=editar';
+    let fd = new FormData();
+    fd.append("codigo", codigo);
+    fd.append("programa", programa);
+    fd.append("uid", uid);
+    let respuesta = await fetch(url, {
+        method: "post",
+        body: fd
+    });
+    let info = await respuesta.json();
+    Swal.fire({
+        position: "center",
+        icon: info.icono,
+        title: info.mensaje,
+        showConfirmButton: false,
+        timer: 1500
+    });
+    setTimeout(()=> {
+        window.location.href = '?controlador=programa&accion=principal';
+    }, 1600)
+}
+
+// INSCRIPCIONES
+
+let registrarInscripcion = async() => {
+    let usuario = document.getElementById('usuario').value;
+    let programa = document.getElementById('programa').value;
+    if(usuario.trim() == "" || programa.trim() == ""){
+        return Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Todos los campos son obligatorios",
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+    let url = '?controlador=uspro&accion=registrar';
+    let fd = new FormData();
+    fd.append("usuario", usuario);
+    fd.append("programa", programa);
+    let respuesta = await fetch(url, {
+        method: "post",
+        body: fd
+    });
+    let info = await respuesta.json();
+    Swal.fire({
+        position: "center",
+        icon: info.icono,
+        title: info.mensaje,
+        showConfirmButton: false,
+        timer: 1500
+    });
+    setTimeout(()=> {
+        window.location.href = '?controlador=uspro&accion=principal';
+    }, 1600)
+}
+
+let eliminarInscripcionConfirm = async (uid,elem) => {
+    Swal.fire({
+        title: "Estas seguro que deseas eliminar?",
+        text: "Esta accion no se puede revertir!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar!",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarInscripcion(uid, elem)
+        }
+    });
+}
+
+let eliminarInscripcion = async (uid, elem) => {
+    let url = `?controlador=uspro&accion=eliminar&uid=${uid}`;
+    let respuesta = await fetch(url)
+    let info = respuesta.json();
+    Swal.fire({
+        title:"Información",
+        text: "Se eliminó el programa correctamentes",
+        icon: info.icono
+    });
+    $(elem).closest('tr').remove();  
+}
+
+let editarInscripcion = async () => {
+    let usuario = document.getElementById('usuario').value;
+    let programa = document.getElementById('programa').value;
+    let uid = document.getElementById('uid').value
+    if(usuario.trim() == "" || programa.trim() == "" || uid.trim() == ""){
+        return Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Todos los campos son obligatorios",
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+    let url = '?controlador=uspro&accion=editar';
+    let fd = new FormData();
+    fd.append("usuario", usuario);
+    fd.append("programa", programa);
+    fd.append("uid", uid);
+    let respuesta = await fetch(url, {
+        method: "post",
+        body: fd
+    });
+    let info = await respuesta.json();
+    Swal.fire({
+        position: "center",
+        icon: info.icono,
+        title: info.mensaje,
+        showConfirmButton: false,
+        timer: 1500
+    });
+    setTimeout(()=> {
+        window.location.href = '?controlador=uspro&accion=principal';
+    }, 1600)
 }
