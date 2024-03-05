@@ -18,10 +18,10 @@
             );
             return $st->execute($v);
         }
-        public static function listar(){
+        public static function listar($condicion = ""){
             $i = new connection();
             $con = $i->getConexion();
-            $sql = "SELECT * FROM t_usuario";
+            $sql = "SELECT * FROM t_usuario $condicion";
             $st = $con->prepare($sql);
             $st->execute();
             return $st->fetchAll();

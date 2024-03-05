@@ -55,8 +55,7 @@ class uspro_modelo{
     public static function listarProgramas() {
         $i = new connection();
         $con = $i -> getConexion();
-        $sql = "SELECT PRO_NOMBRE, PRO_ID
-        FROM t_programa;";
+        $sql = "SELECT PRO_NOMBRE, PRO_ID FROM t_programa;";
         $st = $con -> prepare($sql);
         $st -> execute();
         return $st -> fetchAll();
@@ -64,8 +63,7 @@ class uspro_modelo{
     public static function listarUsuarios() {
         $i = new connection();
         $con = $i -> getConexion();
-        $sql = "SELECT USU_NOMBRES, USU_APELLIDOS, USU_ID
-        FROM t_usuario WHERE USU_ROL != 1;";
+        $sql = "SELECT * FROM t_usuario";
         $st = $con -> prepare($sql);
         $st -> execute();
         return $st -> fetchAll();

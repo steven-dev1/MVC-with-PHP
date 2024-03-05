@@ -7,6 +7,22 @@
             } ?>
         </div>
     </div>
+    <div class="row px-5 pt-5">
+        <div class="col-lg-12">
+            <h3>Reportes</h3>
+            <form action="?controlador=usuario&accion=reporte" method="post">
+                <select name="rol" id="rol" class="form-control my-3">
+                    <option value="1">Administradores</option>
+                    <option value="2">Usuarios</option>
+                    <option value="3">Secretarias</option>
+                    <option value="4">Todos</option>
+                </select>
+            <?php if($_SESSION['USU_ROL'] == 1) {
+                echo '<button class="btn btn-primary">Reporte</button>';
+            } ?>
+            </form>
+        </div>
+    </div>
     <div class="px-5 pt-5 bg-gray">
         <table class="table">
             <thead>

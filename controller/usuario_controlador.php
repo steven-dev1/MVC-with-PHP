@@ -25,6 +25,19 @@
             $this->obj->unirPagina('/usuario/frmEditar.usuario');
         }
 
+        public function reporte(){
+            if(!$_SESSION['USU_UID']){
+                header('Location: ?controlador=inicio&accion=frmLogin');
+            }
+            if(isset($_POST['rol']) && $_POST['rol'] == 3){
+                $rol = $_POST['rol'];
+                $allUsers = usuario_modelo::listar(" WHERE USU_ROL = $rol");
+            } else {
+                $allUsers = usuario_modelo::listar();
+            }
+            require_once "views/usuario/reporte.php";
+        }
+
         public function registrar(){
             if(isset($_POST["names"]) && isset($_POST["last_names"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["telefono"]) && isset($_POST["fecha"]) && isset($_POST["rol"])){
                 extract($_POST);
@@ -91,5 +104,7 @@
                 echo json_encode(array("estado"=> 3, "mensaje"=>"Faltan parametros", "icono"=>"error"));
             }
         }
+
+
     }
 ?>

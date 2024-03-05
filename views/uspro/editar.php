@@ -1,7 +1,7 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-light rounded h-100 p-4">
         <h6 class="mb-4">Registrar usuario</h6>
-        <form method="POST" action="?controlador=usuario&accion=registrar" onsubmit="return false" id="formReg">
+        <form method="POST" action="?controlador=uspro&accion=inscribir" onsubmit="return false" id="formReg">
             <div class="row">
                 <div class="col-lg-6">
                     <label for="exampleInputPassword1" class="form-label">Usuario</label>
