@@ -31,6 +31,14 @@
             $this->obj->unirPagina("uspro/editar");
         }
 
+        public function reporte(){
+            if(!$_SESSION['USU_UID']){
+                header('Location: ?controlador=inicio&accion=frmLogin');
+            }
+            $allUsPros = uspro_modelo::listar();
+            require_once "views/uspro/reporte.php";
+        }
+
 
         public function registrar(){
             if(isset($_POST["usuario"]) && isset($_POST["programa"])){

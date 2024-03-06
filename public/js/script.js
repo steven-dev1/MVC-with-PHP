@@ -38,7 +38,7 @@ let registrarUsuario = async() => {
         document.getElementById('fecha').value = ""
         document.getElementById('rol').value = ""
     }
-    Swal.fire({
+    await Swal.fire({
         position: "center",
         icon: info.icono,
         title: info.mensaje,

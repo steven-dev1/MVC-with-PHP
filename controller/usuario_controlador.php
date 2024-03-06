@@ -29,7 +29,7 @@
             if(!$_SESSION['USU_UID']){
                 header('Location: ?controlador=inicio&accion=frmLogin');
             }
-            if(isset($_POST['rol']) && $_POST['rol'] == 3){
+            if(isset($_POST['rol']) && $_POST['rol'] != 4){
                 $rol = $_POST['rol'];
                 $allUsers = usuario_modelo::listar(" WHERE USU_ROL = $rol");
             } else {

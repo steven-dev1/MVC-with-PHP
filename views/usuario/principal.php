@@ -13,7 +13,7 @@
             <form action="?controlador=usuario&accion=reporte" method="post">
                 <select name="rol" id="rol" class="form-control my-3">
                     <option value="1">Administradores</option>
-                    <option value="2">Usuarios</option>
+                    <option value="2">Estudiantes</option>
                     <option value="3">Secretarias</option>
                     <option value="4">Todos</option>
                 </select>

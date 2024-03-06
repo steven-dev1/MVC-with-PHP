@@ -30,8 +30,8 @@
                 <div class="col-lg-6 my-2">
                     <label for="exampleInputDate" class="form-label">Rol</label>
                     <select name="rol" id="rol" class="p-1 rounded-3 border border-gray outline-none">
-                        <option value="1">Estudiante</option>
-                        <option value="2">Administrador</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Estudiante</option>
                         <option value="3">Secretaria</option>
                     </select>
                 </div>

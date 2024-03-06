@@ -23,6 +23,14 @@
             $this->obj->unirPagina("programa/frmEditar");
         }
 
+        public function reporte(){
+            if(!$_SESSION['USU_UID']){
+                header('Location: ?controlador=inicio&accion=frmLogin');
+            }
+            $allPrograms = programa_modelo::listar();
+            require_once "views/programa/reporte.php";
+        }
+
         public function registrar(){
             if(isset($_POST["codigo"]) && isset($_POST["programa"])){
                 extract($_POST);

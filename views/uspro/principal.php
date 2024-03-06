@@ -1,5 +1,5 @@
 <div class="container-fluid pt-4 px-4">
-    <div class="row">
+    <div class="row px-5 pt-5">
         <div class="col-lg-12">
             <h3>Inscripciones</h3>
             <?php if ($_SESSION['USU_ROL'] == 1){
@@ -7,6 +7,16 @@
             } ?>
         </div>
     </div>
+    <?php if($_SESSION['USU_ROL'] == 1) {
+                echo ('<div class="row px-5 pt-5">
+                <div class="col-lg-12">
+                    <form action="?controlador=uspro&accion=reporte" method="post">
+                        <h3>Reportes</h3>
+                        <button class="btn btn-primary">Reporte</button>
+                    </form>
+                </div>
+            </div>');
+            } ?>
 </div>
 <div class="px-5 pt-5 bg-gray">
         <table class="table">
